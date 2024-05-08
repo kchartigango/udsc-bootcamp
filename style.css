@@ -1,0 +1,25 @@
+/* body {
+    background-color: #9caf88;
+} */
+
+/* h1 {
+    color: white;
+    text-align: center;
+}
+
+#unique-heading {
+    color: purple;
+    text-align: left
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px
+} */
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
