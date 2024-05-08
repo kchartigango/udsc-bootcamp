@@ -79,7 +79,7 @@ map.on('load', () => {
         'source': 'ttc-routes',
         'paint': {
             'line-width': 1,
-            'line-color': 'darkblue',
+            'line-color': 'blue',
         },
     });
 
@@ -98,6 +98,23 @@ map.on('load', () => {
             'circle-color': 'purple',
             'circle-stroke-width': 1.5,
             'circle-stroke-color': 'white'
+        },
+    });
+
+    map.addSource('lake-ontario', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/kchartigango/udsc-bootcamp/main/lake-ontario.geojson',
+        'generateId': true
+    });
+
+    map.addLayer({
+        'id': 'lake-polygon',
+        'type': 'fill',
+        'source': 'lake-ontario',
+        'paint': {
+            'fill-color': '#30949D',
+            'fill-opacity': 0.7,
+            'fill-outline-color': 'lightblue'
         },
     });
  
