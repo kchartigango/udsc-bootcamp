@@ -94,7 +94,7 @@ map.on('load', () => {
         'type': 'circle',
         'source': 'ttc-stops',
         'paint': {
-            'circle-radius': 5,
+            'circle-radius': 6,
             'circle-color': 'purple',
             'circle-stroke-width': 1.5,
             'circle-stroke-color': 'white'
@@ -126,3 +126,21 @@ map.on('mouseenter', 'ttc-point', () => {
 map.on('mouseleave', 'ttc-point', () => {
     map.getCanvas().style.cursor = ''; //This returns cursor to its original style when mouse leaves the TTC stop
 });
+
+map.on('click', 'ttc-point', (e) => {
+    new maplibregl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML('<b>Station name:</b> ' + e.features[0])
+        .addTo(map)
+
+    // map.on('click', 'collect-hex-fill', (e) => {
+    //     new mapboxgl.Popup() //Declaring a new popup object with each click on the point
+    //         .setLngLat(e.lngLat)
+    //         .setHTML("<b>Collision count:</b> " + e.features[0].properties.COUNT) //Using click event properties to add text to the popup box
+    //         .addTo(map); //Show the popup on the web map
+    
+    //         // .setHTML("<b>Collision count:</b> " + e.features[0].properties.COUNT + "<br>" +
+    //         //     "<b>Neighborhood:</b> " + collisiongeojson.features[0].properties.NEIGHBOURHOOD_158) //Using click event properties to add text to the popup box
+    // });
+
+})
