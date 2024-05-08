@@ -66,17 +66,33 @@ const map = new maplibregl.Map({
 });
 
 map.on('load', () => {
- 
-    map.addSource('ttc-data', {
+
+    map.addSource('ttc-routes', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/kchartigango/udsc-bootcamp/main/ttc_routes.geojson',
+        'generateId': true
+    });
+
+    map.addLayer({
+        'id': 'ttc-line',
+        'type': 'line',
+        'source': 'ttc-routes',
+        'paint': {
+            'line-width': 1,
+            'line-color': 'darkblue',
+        },
+    });
+
+    map.addSource('ttc-stops', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/kchartigango/udsc-bootcamp/main/ttc_stops.geojson', //Link to raw github files when in development stage. Update to pages on deployment
-        // 'generateId': true //Create a unique ID for each feature
+        'generateId': true //Create a unique ID for each feature
     });
  
     map.addLayer({
         'id': 'ttc-point',
         'type': 'circle',
-        'source': 'ttc-data',
+        'source': 'ttc-stops',
         'paint': {
             'circle-radius': 5,
             'circle-color': 'purple',
