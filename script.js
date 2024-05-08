@@ -62,25 +62,26 @@ const map = new maplibregl.Map({
     container: 'map', // container id
     style:  'https://api.maptiler.com/maps/basic-v2/style.json?key=ZZmXLp70IeXZpwoYYAmO', // style URL
     center: [-79.397578, 43.664368], // starting position [lng, lat]
-    zoom: 3 // starting zoom
+    zoom: 10 // starting zoom
 });
 
 map.on('load', () => {
  
-    map.addSource('ttc-stops', {
+    map.addSource('ttc-data', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/smith-lg/ggr472-wk6-demo/main/data/can-provterr.geojson', //Link to raw github files when in development stage. Update to pages on deployment
-        'generateId': true //Create a unique ID for each feature
+        data: 'https://raw.githubusercontent.com/kchartigango/udsc-bootcamp/main/ttc_stops.geojson', //Link to raw github files when in development stage. Update to pages on deployment
+        // 'generateId': true //Create a unique ID for each feature
     });
  
     map.addLayer({
-        'id': 'provterr-fill',
-        'type': 'fill',
-        'source': 'ttc-stops',
+        'id': 'ttc-point',
+        'type': 'circle',
+        'source': 'ttc-data',
         'paint': {
-            'fill-color': '#627BC1',
-            'fill-opacity': 0.5,
-            'fill-outline-color': 'white'
+            'circle-radius': 5,
+            'circle-color': 'purple',
+            'circle-stroke-width': 1.5,
+            'circle-stroke-color': 'white'
         },
     });
  
