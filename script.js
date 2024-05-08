@@ -117,5 +117,12 @@ map.on('load', () => {
             'fill-outline-color': 'lightblue'
         },
     });
- 
+});
+
+map.on('mouseenter', 'ttc-point', () => {
+    map.getCanvas().style.cursor = 'pointer'; //This changes the cursor to pointer style when mouse is over a TTC stop
+});
+
+map.on('mouseleave', 'ttc-point', () => {
+    map.getCanvas().style.cursor = ''; //This returns cursor to its original style when mouse leaves the TTC stop
 });
